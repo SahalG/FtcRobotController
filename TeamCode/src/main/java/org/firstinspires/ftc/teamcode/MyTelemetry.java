@@ -9,4 +9,11 @@ public class MyTelemetry {
         telemetry = new MultipleTelemetry(tele, FtcDashboard.getInstance().getTelemetry());
 
     }
+    public static void addData(String key, Object value){
+        telemetry.addData(key, value);
+    }
+
+    public static void update(){
+        telemetry.update();
+    }
 }
