@@ -22,10 +22,10 @@ public class Robot {
         elapsedTime = new ElapsedTime();
         elapsedTime.reset();
 
-        leftFront = hardwareMap.get(DcMotor.class, "leftFront");
-        rightFront = hardwareMap.get(DcMotor.class, "rightFront");
-        backLeft = hardwareMap.get(DcMotor.class, "backLeft");
-        backRight = hardwareMap.get(DcMotor.class, "backRight");
+//        leftFront = hardwareMap.get(DcMotor.class, "leftFront");
+//        rightFront = hardwareMap.get(DcMotor.class, "rightFront");
+//        backLeft = hardwareMap.get(DcMotor.class, "backLeft");
+//        backRight = hardwareMap.get(DcMotor.class, "backRight");
 
 
         hubs = hardwareMap.getAll(LynxModule.class);
@@ -46,5 +46,5 @@ public class Robot {
         MyTelemetry.addData("Loop Time", loopTime);
         MyTelemetry.addData("Hz", Hz);
         MyTelemetry.update();
-        elapsedTime.reset();
+        elapsedTime.reset();            
     }}
