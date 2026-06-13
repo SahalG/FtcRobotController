@@ -46,5 +46,5 @@ public class Robot {
         MyTelemetry.addData("Loop Time", loopTime);
         MyTelemetry.addData("Hz", Hz);
         MyTelemetry.update();
-        elapsedTime.reset();            
+        elapsedTime.reset();
     }}
