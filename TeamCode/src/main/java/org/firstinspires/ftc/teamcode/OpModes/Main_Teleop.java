@@ -27,6 +27,9 @@ public class Main_Teleop extends LinearOpMode {
             if (gp1.right_trigger > 0) {
                 MyTelemetry.addData("Right Trigger", gp1.right_trigger);
             }
+            if (gp1.dpad_down) {
+                MyTelemetry.addData("Dpad Down", true);
+            }
             robot.update();
 
         }
