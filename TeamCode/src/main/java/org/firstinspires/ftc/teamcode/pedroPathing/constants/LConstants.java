@@ -6,6 +6,7 @@ import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 
 public class LConstants {
     static {
+        //Constants for Team Palindrome 29792 robot
         TwoWheelConstants.forwardTicksToInches = 0.00300116997590546;
         TwoWheelConstants.strafeTicksToInches = 0.0030179556753860133;
         TwoWheelConstants.forwardY = -4.5;

@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 public class FConstants {
     static {
+        //Constants for Team Palindrome 29792 robot
         FollowerConstants.localizers = Localizers.TWO_WHEEL;
 
         FollowerConstants.leftFrontMotorName = "leftFront";
