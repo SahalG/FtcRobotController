@@ -7,16 +7,16 @@ import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 public class LConstants {
     static {
         //Constants for Team Palindrome 29792 robot
-        TwoWheelConstants.forwardTicksToInches = 0.00300116997590546;
-        TwoWheelConstants.strafeTicksToInches = 0.0030179556753860133;
-        TwoWheelConstants.forwardY = -4.5;
-        TwoWheelConstants.strafeX = -5;
-        TwoWheelConstants.forwardEncoder_HardwareMapName = "rightBack";
-        TwoWheelConstants.strafeEncoder_HardwareMapName = "leftFront";
+        TwoWheelConstants.forwardTicksToInches = 0.001989436789;
+        TwoWheelConstants.strafeTicksToInches = 0.001989436789;
+        TwoWheelConstants.forwardY = 6;
+        TwoWheelConstants.strafeX = -3;
+        TwoWheelConstants.forwardEncoder_HardwareMapName = "RBM";
+        TwoWheelConstants.strafeEncoder_HardwareMapName = "LFM";
         TwoWheelConstants.forwardEncoderDirection = Encoder.REVERSE;
-        TwoWheelConstants.strafeEncoderDirection = Encoder.FORWARD;
+        TwoWheelConstants.strafeEncoderDirection = Encoder.REVERSE;
         TwoWheelConstants.IMU_HardwareMapName = "imu";
-        TwoWheelConstants.IMU_Orientation = new RevHubOrientationOnRobot(RevHubOrientationOnRobot.LogoFacingDirection.RIGHT, RevHubOrientationOnRobot.UsbFacingDirection.UP);
+        TwoWheelConstants.IMU_Orientation = new RevHubOrientationOnRobot(RevHubOrientationOnRobot.LogoFacingDirection.UP, RevHubOrientationOnRobot.UsbFacingDirection.LEFT);
 
     }
 }
