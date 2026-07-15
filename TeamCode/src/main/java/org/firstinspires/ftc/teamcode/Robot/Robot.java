@@ -1,9 +1,12 @@
 package org.firstinspires.ftc.teamcode.Robot;
 
+import com.pedropathing.follower.Follower;
 import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import org.firstinspires.ftc.teamcode.pedroPathing.constants.LConstants;
+import org.firstinspires.ftc.teamcode.pedroPathing.constants.FConstants;
 
 import org.firstinspires.ftc.teamcode.MyTelemetry;
 
@@ -16,9 +19,11 @@ public class Robot {
 
 
     public double loopTime;
+    public static Follower follower;
     public float Hz;
 
     public Robot (HardwareMap hardwareMap) {
+        follower = new Follower(hardwareMap, FConstants.class, LConstants.class);
         elapsedTime = new ElapsedTime();
         elapsedTime.reset();
 
@@ -47,4 +52,5 @@ public class Robot {
         MyTelemetry.addData("Hz", Hz);
         MyTelemetry.update();
         elapsedTime.reset();
+        follower.update();
     }}
