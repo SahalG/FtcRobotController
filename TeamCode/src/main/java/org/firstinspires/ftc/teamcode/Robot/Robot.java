@@ -1,10 +1,14 @@
 package org.firstinspires.ftc.teamcode.Robot;
 
+import com.arcrobotics.ftclib.command.CommandScheduler;
 import com.pedropathing.follower.Follower;
 import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
+
+import org.firstinspires.ftc.teamcode.Robot.Subsystems.Shooter;
 import org.firstinspires.ftc.teamcode.pedroPathing.constants.LConstants;
 import org.firstinspires.ftc.teamcode.pedroPathing.constants.FConstants;
 
@@ -15,28 +19,30 @@ import java.util.List;
 public class Robot {
     private static ElapsedTime elapsedTime;
     public List<LynxModule> hubs;
-    DcMotor leftFront, rightFront, backLeft, backRight;
 
 
     public double loopTime;
     public static Follower follower;
     public float Hz;
+    DcMotor shooterMotor;
+
+    public Shooter shooter;
 
     public Robot (HardwareMap hardwareMap) {
+        CommandScheduler.getInstance().reset();
         follower = new Follower(hardwareMap, FConstants.class, LConstants.class);
         elapsedTime = new ElapsedTime();
         elapsedTime.reset();
+        shooterMotor = hardwareMap.get(DcMotor.class, "shooterMotor");
+        shooterMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 
-//        leftFront = hardwareMap.get(DcMotor.class, "leftFront");
-//        rightFront = hardwareMap.get(DcMotor.class, "rightFront");
-//        backLeft = hardwareMap.get(DcMotor.class, "backLeft");
-//        backRight = hardwareMap.get(DcMotor.class, "backRight");
-
+        shooter = new Shooter(shooterMotor);
 
         hubs = hardwareMap.getAll(LynxModule.class);
         for (LynxModule hub : hubs) {
             hub.setBulkCachingMode(LynxModule.BulkCachingMode.MANUAL);
         }
+        CommandScheduler.getInstance().registerSubsystem(shooter);
     }
 
     public void update () {
