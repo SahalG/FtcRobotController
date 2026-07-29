@@ -59,4 +59,13 @@ public class Robot {
         MyTelemetry.update();
         elapsedTime.reset();
         follower.update();
-    }}
+    }
+
+    public void holdPose(){
+        follower.holdPoint(follower.getPose());
+    }
+
+    public void breakFollowing(){
+        follower.breakFollowing();
+    }
+}
