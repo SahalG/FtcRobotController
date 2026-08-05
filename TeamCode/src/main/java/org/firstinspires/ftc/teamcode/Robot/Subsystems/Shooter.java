@@ -26,7 +26,7 @@ public class Shooter implements Subsystem {
     // Continuously-updated RPM values
     private double leftRpm = 0;
     private double rightRpm = 0;
-    private double scaleFactor;
+    private final double scaleFactor = 200;
     public static double mathSpeed;
 
     public Shooter(DcMotorEx leftShooterMotor, DcMotorEx rightShooter) {
@@ -43,13 +43,14 @@ public class Shooter implements Subsystem {
             case STOP:
                 leftShooterMotor.setPower(0);
                 rightShooterMotor.setPower(0);
+                targetSpeed = 0;
                 break;
             case CLOSE:
-                targetSpeed = 1000;
+                targetSpeed = 3000;
 
                 break;
             case FAR:
-                targetSpeed = 4000;
+                targetSpeed = 5000;
 
                 break;
             case LINEAR:
@@ -80,6 +81,7 @@ public class Shooter implements Subsystem {
         MyTelemetry.addData("RPM", avgRpm);
         MyTelemetry.addData("Target RPM", targetRpm);
         MyTelemetry.addData("Power Output", power);
+        MyTelemetry.addData("Shooter State", state);
     }
 
     @Override

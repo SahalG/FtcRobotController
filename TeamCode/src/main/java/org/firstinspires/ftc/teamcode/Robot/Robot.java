@@ -39,10 +39,10 @@ public class Robot {
         follower = new Follower(hardwareMap, FConstants.class, LConstants.class);
         elapsedTime = new ElapsedTime();
         elapsedTime.reset();
-        leftShooterMotor = hardwareMap.get(DcMotorEx.class, "shooterMotor");
+        leftShooterMotor = hardwareMap.get(DcMotorEx.class, "launcher");
         leftShooterMotor.setDirection(DcMotorSimple.Direction.FORWARD);
         leftShooterMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-        rightShooterMotor = hardwareMap.get(DcMotorEx.class, "shooterMotor");
+        rightShooterMotor = hardwareMap.get(DcMotorEx.class, "launcher2");
         rightShooterMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         rightShooterMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
 
@@ -58,7 +58,7 @@ public class Robot {
 
     public void update () {
 
-
+        CommandScheduler.getInstance().run();
         for(LynxModule hub : hubs){
             hub.clearBulkCache();
         }

@@ -29,6 +29,8 @@ public class Main_Teleop extends LinearOpMode {
         GamepadEx gp1 = new GamepadEx(gamepad1);
         GamepadEx gp2 = new GamepadEx(gamepad2);
 
+
+
         gp1.getGamepadButton(GamepadKeys.Button.A).whenPressed(
                 new InstantCommand(robot::holdPose)
         );
@@ -49,20 +51,22 @@ public class Main_Teleop extends LinearOpMode {
         gp2.getGamepadButton(GamepadKeys.Button.DPAD_DOWN).whenPressed(
                 new ShooterCommand(robot, Shooter.ShooterState.LINEAR)
         );
+        gp2.getGamepadButton(GamepadKeys.Button.X).whenPressed(
+                new ShooterCommand(robot, Shooter.ShooterState.STOP)
+        );
 
 
         waitForStart();
 
         while (opModeIsActive()) {
 
-            telemetry.addLine("Gamepad Controls");
-            telemetry.addLine();
-
 
             Robot.follower.setTeleOpMovementVectors(-gamepad1.left_stick_y, -gamepad1.left_stick_x, -gamepad1.right_stick_x);
+            robot.update();
+            MyTelemetry.update();
             }
 
-            robot.update();
+
 
         }
     }
