@@ -43,12 +43,13 @@ public class Main_Teleop extends LinearOpMode {
         gp2.getGamepadButton(GamepadKeys.Button.RIGHT_BUMPER).whenPressed(
                 new ShooterCommand(robot, Shooter.ShooterState.FAR)
         );
-        gp2.getGamepadButton(GamepadKeys.Button.RIGHT_BUMPER).whenReleased(
-                new ShooterCommand(robot, Shooter.ShooterState.STOP)
+        gp2.getGamepadButton(GamepadKeys.Button.DPAD_UP).whenPressed(
+                new ShooterCommand(robot, Shooter.ShooterState.MATH)
         );
-        gp2.getGamepadButton(GamepadKeys.Button.LEFT_BUMPER).whenReleased(
-                new ShooterCommand(robot, Shooter.ShooterState.STOP)
+        gp2.getGamepadButton(GamepadKeys.Button.DPAD_DOWN).whenPressed(
+                new ShooterCommand(robot, Shooter.ShooterState.LINEAR)
         );
+
 
         waitForStart();
 
