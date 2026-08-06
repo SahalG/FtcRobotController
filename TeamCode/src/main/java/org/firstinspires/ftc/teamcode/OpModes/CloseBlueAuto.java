@@ -29,13 +29,18 @@ public class CloseBlueAuto extends LinearOpMode {
         robot = new Robot(hardwareMap);
         pathState = 0;
 
-        Robot.follower.setStartingPose(Poses.startPose);
+        Robot.follower.setStartingPose(AutoConstants.startPose);
+        //SequentialCommandGroup auto = new SequentialCommandGroup(
+                //new follow path command
+        //)
 
         Paths();
 
         waitForStart();
 
         while (opModeIsActive()) {
+
+            //CommandScheduler.getInstance().schedule(auto);
             robot.update();
 
             switch (pathState) {

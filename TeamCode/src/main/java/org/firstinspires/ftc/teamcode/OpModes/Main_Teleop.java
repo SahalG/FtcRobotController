@@ -12,10 +12,13 @@ import com.arcrobotics.ftclib.command.WaitCommand;
 import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+import org.firstinspires.ftc.teamcode.Robot.Commands.IntakeCommand;
 import org.firstinspires.ftc.teamcode.Robot.Commands.ShooterCommand;
 
 import org.firstinspires.ftc.teamcode.MyTelemetry;
 import org.firstinspires.ftc.teamcode.Robot.Robot;
+import org.firstinspires.ftc.teamcode.Robot.Subsystems.Intake;
 import org.firstinspires.ftc.teamcode.Robot.Subsystems.Shooter;
 
 
@@ -54,6 +57,11 @@ public class Main_Teleop extends LinearOpMode {
         gp2.getGamepadButton(GamepadKeys.Button.X).whenPressed(
                 new ShooterCommand(robot, Shooter.ShooterState.STOP)
         );
+        gp2.getGamepadButton(GamepadKeys.Button.A).toggleWhenPressed(
+                new IntakeCommand(robot, Intake.IntakeState.OFF),
+                new IntakeCommand(robot, Intake.IntakeState.ON)
+        );
+
 
 
         waitForStart();

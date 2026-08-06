@@ -4,7 +4,6 @@ import com.acmerobotics.dashboard.config.Config;
 import com.arcrobotics.ftclib.command.Subsystem;
 import com.arcrobotics.ftclib.controller.PIDController;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
-import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.teamcode.MyTelemetry;
@@ -17,11 +16,10 @@ public class Shooter implements Subsystem {
     DcMotorEx leftShooterMotor;
     DcMotorEx rightShooterMotor;
     PIDController shooterRPMPID;
-    ElapsedTime dTime;
     public double power;
     public double avgRpm;
     public double targetSpeed;
-    public ShooterState state = ShooterState.STOP;
+    public ShooterState shooterState = ShooterState.STOP;
 
     // Continuously-updated RPM values
     private double leftRpm = 0;
@@ -34,11 +32,10 @@ public class Shooter implements Subsystem {
         this.rightShooterMotor = rightShooter;
         shooterRPMPID = new PIDController(1000, 0, 0);
         shooterRPMPID.setTolerance(10);
-        dTime = new ElapsedTime();
     }
 
     public void setState(ShooterState state) {
-        this.state = state;
+        this.shooterState = state;
         switch (state) {
             case STOP:
                 leftShooterMotor.setPower(0);
@@ -81,12 +78,12 @@ public class Shooter implements Subsystem {
         MyTelemetry.addData("RPM", avgRpm);
         MyTelemetry.addData("Target RPM", targetRpm);
         MyTelemetry.addData("Power Output", power);
-        MyTelemetry.addData("Shooter State", state);
+        MyTelemetry.addData("Shooter State", shooterState);
     }
 
     @Override
     public void periodic() {
-        setState(state);
+        setState(shooterState);
         getRpm();
         setPower(targetSpeed);
     }
