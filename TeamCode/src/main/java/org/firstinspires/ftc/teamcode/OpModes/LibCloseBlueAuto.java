@@ -37,6 +37,7 @@ public class LibCloseBlueAuto extends LinearOpMode {
         robot = new Robot(hardwareMap);
 
         Robot.follower.setStartingPose(AutoConstants.startPose);
+        Paths(follower);
         CommandScheduler.getInstance().schedule(new BlockerCommand(robot, Blocker.BlockerState.CLOSED));
         CommandScheduler.getInstance().schedule(new IntakeCommand(robot, Intake.IntakeState.OFF));
 
@@ -64,13 +65,9 @@ public class LibCloseBlueAuto extends LinearOpMode {
 
 
         CommandScheduler.getInstance().schedule(new ShooterCommand(robot, Shooter.ShooterState.CLOSE));
+        CommandScheduler.getInstance().schedule(auto);
 
         while (opModeIsActive()) {
-
-            //CommandScheduler.getInstance().schedule(auto);
-            robot.update();
-
-
             robot.update();
         }
 
